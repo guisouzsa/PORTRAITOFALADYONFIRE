@@ -8,13 +8,13 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   
-  <!-- Google Fonts com Serifas Clássicas e Robustas -->
+  <!-- Fontes Clássicas e Naturais (Sem exagero) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Montserrat:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
-  <!-- Configuração do Tailwind com Fundo Branco/Off-White e Cores do Filme -->
+  <!-- Configuração do Tailwind: Cores Limpas e Tipografia Simples -->
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -22,18 +22,17 @@
         extend: {
           colors: {
             'pure-white': '#FFFFFF',
-            'off-white': '#FAF8F5',      // Fundo Claro Editorial
-            'linen': '#F3EFEA',          // Fundo Claro Secundário
-            'slate-dark': '#293A43',      // Azul-Petróleo Escuro (Texto Principal)
-            'teal-muted': '#465B59',      // Verde-Acinzentado / Muted Teal
-            'umber-deep': '#5D361B',      // Marrom Quente / Destaque
-            'taupe': '#83685C',           // Marrom-Acinzentado
-            'dusty-sand': '#C19A86',      // Pêssego Envelhecido
+            'off-white': '#FBFBFB',
+            'warm-gray': '#F4F5F6',
+            'slate-dark': '#1A2930',      // Texto principal escuro e legível
+            'slate-muted': '#556973',     // Texto secundário natural
+            'marine': '#1E5874',          // Azul marinho suave
+            'marine-hover': '#144055',    // Azul marinho mais escuro para hover
+            'line-gray': '#E2E6E8',       // Linhas divisórias finas e sutis
           },
           fontFamily: {
-            'display': ['"Playfair Display"', 'serif'],
-            'garamond': ['"Cormorant Garamond"', 'serif'],
-            'body': ['Montserrat', 'sans-serif'],
+            'serif': ['"Playfair Display"', 'Georgia', 'serif'],
+            'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             'ui': ['Outfit', 'sans-serif'],
           }
         }
@@ -42,198 +41,178 @@
   </script>
 
   <style>
+    /* Transições de revelação suaves e naturais */
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.3s; }
     
-    .ghost-btn {
-      border: 1px solid #293A43;
-      background: transparent;
-      color: #293A43;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      transition: all 0.35s ease;
-      font-weight: 600;
-    }
-    .ghost-btn:hover {
-      background-color: #293A43;
+    /* Botões simples e diretos */
+    .btn-marine {
+      background-color: #1E5874;
       color: #FFFFFF;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px -5px rgba(41, 58, 67, 0.25);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+    .btn-marine:hover {
+      background-color: #144055;
     }
 
-    .ghost-btn-umber {
-      background: #5D361B;
+    .btn-outline {
+      border: 1px solid #1A2930;
+      color: #1A2930;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+    .btn-outline:hover {
+      background-color: #1A2930;
       color: #FFFFFF;
-      border: 1px solid #5D361B;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      transition: all 0.35s ease;
-      font-weight: 600;
     }
-    .ghost-btn-umber:hover {
-      background-color: #7A4521;
-      border-color: #7A4521;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px -5px rgba(93, 54, 27, 0.35);
+
+    /* Links editoriais simples */
+    .simple-link {
+      color: #1E5874;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s ease;
     }
-    
-    .text-link {
-      text-decoration: none;
-      position: relative;
-      transition: color 0.3s ease;
+    .simple-link:hover {
+      color: #144055;
     }
-    .text-link::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: currentColor;
-      transition: opacity 0.3s ease;
-    }
-    .text-link:hover {
-      color: #5D361B;
-    }
-    
-    .image-frame {
-      border: 1px solid rgba(41, 58, 67, 0.15);
-      padding: 10px;
+
+    /* Moldura de imagem natural e limpa */
+    .photo-container {
       background: #FFFFFF;
-      cursor: pointer;
-      box-shadow: 0 10px 30px -10px rgba(41, 58, 67, 0.1);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-    .image-frame:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(41, 58, 67, 0.18);
-      border-color: #465B59;
+      border: 1px solid #E2E6E8;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
 
     /* Lightbox */
     #lightbox {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.3s ease;
     }
     #lightbox.open {
       opacity: 1;
       pointer-events: auto;
     }
-    
-    *:focus-visible {
-      outline: 2px solid #5D361B;
-      outline-offset: 3px;
-    }
   </style>
 </head>
-<body class="bg-off-white text-slate-dark font-body overflow-x-hidden selection:bg-dusty-sand selection:text-slate-dark">
+<body class="bg-off-white text-slate-dark font-sans leading-relaxed selection:bg-marine selection:text-white">
 
-  <!-- TopNavBar Branco / Clean -->
-  <nav class="w-full sticky top-0 z-40 bg-off-white/90 border-b border-slate-dark/10 backdrop-blur-md transition-all duration-500">
-    <div class="flex justify-between items-center px-6 md:px-20 py-7 max-w-[1440px] mx-auto">
-      <a class="font-display text-2xl md:text-3xl font-bold tracking-tight text-slate-dark hover:text-umber-deep transition-colors" href="#">
+  <!-- Navegação Minimalista e Limpa -->
+  <nav class="w-full sticky top-0 z-40 bg-white/95 border-b border-line-gray backdrop-blur-sm">
+    <div class="flex justify-between items-center px-6 md:px-16 py-5 max-w-6xl mx-auto">
+      <a class="font-serif text-2xl font-bold tracking-tight text-slate-dark" href="#">
         PORTRAIT
       </a>
-      <div class="hidden md:flex space-x-12 items-center">
-        <a class="text-slate-dark border-b border-slate-dark pb-1 font-ui text-xs uppercase tracking-widest hover:text-umber-deep transition-colors" href="#story">HISTÓRIA</a>
-        <a class="text-teal-muted font-ui text-xs uppercase tracking-widest hover:text-slate-dark transition-colors" href="#scenes">CENAS</a>
-        <a class="text-teal-muted font-ui text-xs uppercase tracking-widest hover:text-slate-dark transition-colors" href="#watch">ONDE ASSISTIR</a>
+      <div class="hidden md:flex space-x-8 items-center text-sm">
+        <a class="text-slate-dark hover:text-marine transition-colors font-medium" href="#historia">História</a>
+        <a class="text-slate-muted hover:text-slate-dark transition-colors" href="#critica">Crítica</a>
+        <a class="text-slate-muted hover:text-slate-dark transition-colors" href="#cenas">Cenas</a>
+        <a class="text-slate-muted hover:text-slate-dark transition-colors" href="#artigos">Artigos</a>
+        <a class="text-slate-muted hover:text-slate-dark transition-colors" href="#onde-assistir">Onde Assistir</a>
       </div>
-      <a class="ghost-btn px-6 py-2.5 font-ui text-xs text-slate-dark hidden md:inline-block border-slate-dark/30 rounded-sm" href="#watch">
-        ASSISTIR
+      <a class="btn-marine text-xs px-5 py-2.5 rounded-sm uppercase tracking-wider font-medium hidden md:inline-block" href="#onde-assistir">
+        Assistir
       </a>
     </div>
   </nav>
 
   <main>
-    <!-- Hero Section: Textos em Cima e Imagem Principal (mainphoto.jpg) Abaixo -->
-    <header class="relative bg-off-white text-slate-dark pt-16 pb-24 md:pt-20 md:pb-32 border-b border-slate-dark/10">
-      <div class="w-full px-6 md:px-20 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
+    <!-- Topo / Hero Simples e Elegante -->
+    <header class="pt-16 pb-20 md:pt-20 md:pb-24 border-b border-line-gray bg-white">
+      <div class="px-6 md:px-16 max-w-5xl mx-auto text-center reveal">
         
-        <!-- Bloco de Texto (Título e Descrição no Topo) -->
-        <div class="md:col-span-10 md:col-start-2 flex flex-col justify-center text-center reveal mb-10 md:mb-14">
-          <span class="font-ui text-xs uppercase tracking-[0.25em] text-teal-muted font-medium mb-4">
-            Uma Obra de Céline Sciamma
-          </span>
-          <h1 class="font-display text-5xl md:text-7xl lg:text-[6.8rem] mb-6 leading-[0.95] tracking-tight text-slate-dark font-bold">
-            <span class="block">PORTRAIT OF A</span>
-            <span class="block italic text-umber-deep font-normal mt-1">LADY ON FIRE</span>
-          </h1>
-          <p class="font-body text-base md:text-xl max-w-2xl mx-auto text-teal-muted mb-10 font-normal leading-relaxed">
-            Uma história intensa e inesquecível sobre arte, memória e amor proibido nas costas rochosas da Bretanha no século XVIII.
-          </p>
-          <div class="flex flex-wrap gap-6 justify-center reveal reveal-delay-1">
-            <a class="ghost-btn-umber px-9 py-4 font-ui text-xs md:text-sm rounded-sm font-semibold" href="#scenes">
-              EXPLORAR GALERIA
-            </a>
-            <a class="text-link font-ui text-xs md:text-sm uppercase tracking-widest flex items-center gap-2 self-center text-slate-dark font-medium" href="#story">
-              LER SOBRE O FILME <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </a>
-          </div>
+        <p class="text-xs uppercase tracking-widest text-marine font-semibold mb-4">
+          Céline Sciamma • 2019
+        </p>
+        
+        <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-slate-dark mb-6 tracking-tight leading-tight">
+          Portrait of a <span class="italic font-normal text-marine">Lady on Fire</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg text-slate-muted max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+          Uma história de amor, arte e memória ambientada na costa da Bretanha no final do século XVIII.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 justify-center mb-14 text-sm">
+          <a class="btn-marine px-7 py-3 rounded-sm font-medium" href="#critica">
+            Ler Crítica
+          </a>
+          <a class="btn-outline px-7 py-3 rounded-sm font-medium" href="#cenas">
+            Ver Cenas
+          </a>
         </div>
 
-        <!-- Imagem Principal Logo Abaixo dos Textos (mainphoto.jpg) -->
-        <div class="md:col-span-12 reveal reveal-delay-2">
-          <div class="image-frame rounded-sm group">
-            <div class="w-full aspect-[21/9] md:aspect-[2.4/1] overflow-hidden bg-linen relative">
-              <img 
-                src="mainphoto.jpg" 
-                alt="Cena principal - Portrait of a Lady on Fire nas falésias da Bretanha" 
-                class="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 cursor-pointer gallery-trigger"
-              />
-            </div>
-            <div class="flex justify-between items-center py-3 px-3 bg-white">
-              <span class="font-ui text-xs text-taupe uppercase tracking-widest">Fotografia Principal</span>
-              <span class="font-ui text-xs text-slate-dark font-medium uppercase tracking-wider">Céline Sciamma • 2019</span>
-            </div>
+        <!-- Foto Principal (mainphoto.jpg) com Enquadramento Limpo -->
+        <div class="photo-container p-2 rounded-sm max-w-5xl mx-auto">
+          <div class="aspect-[21/9] md:aspect-[2.3/1] w-full overflow-hidden bg-warm-gray cursor-pointer gallery-trigger">
+            <img 
+              src="mainphoto.jpg" 
+              alt="Cena principal de Retrato de uma Jovem em Chamas" 
+              class="w-full h-full object-cover object-center hover:scale-[1.01] transition-transform duration-500"
+            />
+          </div>
+          <div class="flex justify-between items-center px-3 py-2.5 text-xs text-slate-muted border-t border-line-gray mt-1">
+            <span>As falésias da Bretanha</span>
+            <span>Foto: Lilies Films / Divulgação</span>
           </div>
         </div>
 
       </div>
     </header>
 
-    <!-- Seção Editorial "The Gaze" -->
-    <section class="py-28 bg-pure-white text-slate-dark relative" id="story">
-      <div class="px-6 md:px-20 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+    <!-- Crítica de Cinema (Formato Artigo Editorial Natural) -->
+    <section class="py-20 bg-white border-b border-line-gray" id="critica">
+      <div class="px-6 md:px-16 max-w-3xl mx-auto reveal">
         
-        <!-- Métricas com as Cores do Filme -->
-        <div class="md:col-span-4 md:col-start-2 flex flex-col justify-center gap-12 reveal">
-          <div>
-            <span class="block font-display text-5xl md:text-6xl text-slate-dark font-bold mb-1">50+</span>
-            <span class="font-ui text-xs uppercase tracking-widest text-teal-muted font-medium">Prêmios Internacionais</span>
-          </div>
-          <div>
-            <span class="block font-display text-5xl md:text-6xl text-umber-deep font-bold mb-1">98%</span>
-            <span class="font-ui text-xs uppercase tracking-widest text-teal-muted font-medium">Rotten Tomatoes</span>
-          </div>
-          <div>
-            <span class="block font-display text-5xl md:text-6xl text-slate-dark font-bold mb-1">121</span>
-            <span class="font-ui text-xs uppercase tracking-widest text-teal-muted font-medium">Minutos de Duração</span>
-          </div>
+        <!-- Cabeçalho do Artigo -->
+        <div class="border-b border-line-gray pb-6 mb-8">
+          <p class="text-xs uppercase tracking-wider text-marine font-semibold mb-2">Crítica de Cinema</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-dark mb-3">
+            O intelecto e o afeto reconciliados na tela
+          </h2>
+          <p class="text-sm text-slate-muted">
+            Por <strong class="text-slate-dark">Marcelo Hessel</strong> • Publicado no Omelete • Avaliação: ★★★★★ (Excelente)
+          </p>
         </div>
 
-        <!-- Texto da Narrativa -->
-        <div class="md:col-span-6 md:col-start-6 flex flex-col justify-center reveal reveal-delay-1">
-          <h2 class="font-display text-3xl md:text-4xl mb-8 italic text-slate-dark font-bold leading-tight">
-            "Uma obra-prima cinematográfica sobre a cumplicidade e o olhar feminino."
-          </h2>
-          <div class="font-body text-base text-teal-muted space-y-6 font-normal leading-relaxed">
-            <p>
-              Em 1770, a pintora Marianne é contratada para fazer o retrato de casamento de Héloïse, uma jovem nobre que acaba de deixar o convento e resiste ao matrimônio imposto.
-            </p>
-            <p>
-              A pintura precisa ser feita em segredo: Marianne a observa durante as caminhadas diurnas e pinta à luz de velas durante a noite. Conforme compartilham os primeiros momentos de liberdade de Héloïse, uma cumplicidade profunda e um amor inesquecível florescem entre as duas.
-            </p>
+        <!-- Texto da Crítica -->
+        <div class="space-y-6 text-base text-slate-dark/90 leading-relaxed font-normal">
+          <p>
+            Numa época de obscurantismo em que a expressão "intelectual" é vista como sinônimo de pedante, é um grande alívio e chega a ser francamente emocionante ver um filme como <em>Retrato de uma Jovem em Chamas</em>.
+          </p>
+          <p>
+            O longa de Céline Sciamma usa uma situação acima de tudo misteriosa, que é o acaso de apaixonar-se por alguém, com tudo o que tem de indizível e indecifrável, e tenta decodificar esse mistério num filme de intensa troca intelectual, sobre arte, olhar e representação.
+          </p>
+          
+          <blockquote class="my-8 pl-6 border-l-2 border-marine italic text-slate-dark font-serif text-lg leading-relaxed bg-off-white py-4 pr-4 rounded-r-sm">
+            "A sugestão erótica de associar a nudez e o fogo com a pintura é a senha que o filme precisa para envolver essas personagens num pacto de cumplicidade entre iguais, mediado pela beleza e pela aproximação entre olhares."
+          </blockquote>
+
+          <p>
+            Na trama, Marianne (Noémie Merlant) é contratada para pintar o retrato de Héloïse (Adèle Haenel). Como a noiva reluta em se casar, Marianne precisa se disfarçar como dama de companhia durante o dia e pintar de memória, escondida em seu quarto, durante a noite.
+          </p>
+          <p>
+            Entre os momentos de paixão, as trocas entre Marianne e Héloïse envolvem sentir a brisa da costa, conversar sobre o futuro, colaborar no ato de cozinhar, dividir incertezas e assistir aos rituais cotidianos. Sciamma parte do elemental: o contato com a água, o ar, a terra e o fogo.
+          </p>
+        </div>
+
+        <!-- Linha Simples com os Dados do Filme -->
+        <div class="mt-12 pt-6 border-t border-line-gray flex flex-wrap justify-between items-center gap-4 text-xs text-slate-muted">
+          <div>
+            <strong class="text-slate-dark">Direção:</strong> Céline Sciamma • 
+            <strong class="text-slate-dark">Duração:</strong> 119 min • 
+            <strong class="text-slate-dark">Ano:</strong> 2019
+          </div>
+          <div>
+            <span class="text-marine font-semibold">Prêmio de Melhor Roteiro em Cannes</span>
           </div>
         </div>
 
@@ -241,125 +220,206 @@
     </section>
 
     <!-- Galeria de Cenas com heloisa.jpg e marianne.jpg -->
-    <section class="py-28 bg-off-white relative border-t border-b border-slate-dark/10" id="scenes">
-      <div class="px-6 md:px-20 max-w-[1440px] mx-auto mb-20 flex flex-col items-center">
-        <h2 class="font-display text-4xl md:text-6xl text-center text-slate-dark font-bold reveal">Olhar & Silêncio</h2>
-        <p class="font-ui text-xs uppercase text-teal-muted mt-4 tracking-[0.3em] font-medium reveal reveal-delay-1">Retratos Selecionados</p>
-      </div>
-
-      <div class="px-6 md:px-20 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+    <section class="py-20 bg-off-white border-b border-line-gray" id="cenas">
+      <div class="px-6 md:px-16 max-w-5xl mx-auto">
         
-        <!-- Foto de Heloisa (heloisa.jpg) -->
-        <div class="md:col-span-6 reveal">
-          <div class="image-frame rounded-sm group">
-            <div class="w-full aspect-[16/10] overflow-hidden bg-linen">
-              <img 
-                src="heloisa.jpg" 
-                alt="Retrato de Héloïse - Adèle Haenel" 
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 cursor-pointer gallery-trigger"
-              />
-            </div>
-            <div class="flex justify-between items-center mt-4 px-2">
-              <span class="font-ui text-xs text-taupe uppercase tracking-widest font-semibold">Fig I.</span>
-              <span class="font-ui text-xs text-slate-dark uppercase tracking-widest font-bold">Héloïse (Adèle Haenel)</span>
-            </div>
-          </div>
-          <p class="font-body text-xs md:text-sm text-teal-muted mt-4 px-2 leading-relaxed font-normal">
-            A jovem nobre que se recusa a posar, desafiando as convenções até encontrar na artista seu espelho e paixão.
-          </p>
+        <div class="mb-12 text-center reveal">
+          <p class="text-xs uppercase tracking-widest text-marine font-semibold mb-2">Galeria</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-dark">As Protagonistas</h2>
         </div>
 
-        <!-- Foto de Marianne (marianne.jpg) -->
-        <div class="md:col-span-6 reveal reveal-delay-1">
-          <div class="image-frame rounded-sm group">
-            <div class="w-full aspect-[16/10] overflow-hidden bg-linen">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Heloisa -->
+          <div class="photo-container p-2 rounded-sm reveal">
+            <div class="aspect-[16/10] overflow-hidden bg-warm-gray cursor-pointer gallery-trigger">
               <img 
-                src="marianne.jpg" 
-                alt="Retrato de Marianne - Noémie Merlant" 
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 cursor-pointer gallery-trigger"
+                src="heloisa.jpg" 
+                alt="Héloïse (interpretada por Adèle Haenel)" 
+                class="w-full h-full object-cover object-center hover:scale-[1.01] transition-transform duration-500"
               />
             </div>
-            <div class="flex justify-between items-center mt-4 px-2">
-              <span class="font-ui text-xs text-taupe uppercase tracking-widest font-semibold">Fig II.</span>
-              <span class="font-ui text-xs text-slate-dark uppercase tracking-widest font-bold">Marianne (Noémie Merlant)</span>
+            <div class="p-4 border-t border-line-gray bg-white">
+              <h3 class="font-serif text-lg font-bold text-slate-dark">Héloïse</h3>
+              <p class="text-xs text-marine font-medium mb-2">Adèle Haenel</p>
+              <p class="text-xs text-slate-muted leading-relaxed">
+                Jovem nobre que resiste ao casamento arranjado após sair do convento, encontrando em Marianne um olhar de igualdade e liberdade.
+              </p>
             </div>
           </div>
-          <p class="font-body text-xs md:text-sm text-teal-muted mt-4 px-2 leading-relaxed font-normal">
-            A pintora que precisa capturar à luz de velas os traços e a essência secreta de quem ama.
-          </p>
+
+          <!-- Marianne -->
+          <div class="photo-container p-2 rounded-sm reveal">
+            <div class="aspect-[16/10] overflow-hidden bg-warm-gray cursor-pointer gallery-trigger">
+              <img 
+                src="marianne.jpg" 
+                alt="Marianne (interpretada por Noémie Merlant)" 
+                class="w-full h-full object-cover object-center hover:scale-[1.01] transition-transform duration-500"
+              />
+            </div>
+            <div class="p-4 border-t border-line-gray bg-white">
+              <h3 class="font-serif text-lg font-bold text-slate-dark">Marianne</h3>
+              <p class="text-xs text-marine font-medium mb-2">Noémie Merlant</p>
+              <p class="text-xs text-slate-muted leading-relaxed">
+                Pintora contratada para realizar o retrato secreto que passa a enxergar seu objeto de estudo através do afeto e da arte.
+              </p>
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- Onde Assistir -->
-    <section class="py-28 bg-pure-white text-slate-dark" id="watch">
-      <div class="px-6 md:px-20 max-w-[1440px] mx-auto flex flex-col items-center text-center reveal">
-        <h2 class="font-display text-4xl md:text-5xl mb-4 text-umber-deep font-bold">Viva a Experiência</h2>
-        <p class="font-body text-base text-teal-muted max-w-md mb-16 font-normal">
-          Disponível nos principais serviços de streaming e aluguel digital.
+    <!-- Artigos e Leituras (Formato de Lista Editorial Simples) -->
+    <section class="py-20 bg-white border-b border-line-gray" id="artigos">
+      <div class="px-6 md:px-16 max-w-4xl mx-auto">
+        
+        <div class="mb-10 reveal">
+          <p class="text-xs uppercase tracking-widest text-marine font-semibold mb-2">Leituras Recomendadas</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-dark">Textos & Ensaios sobre o Filme</h2>
+        </div>
+
+        <div class="divide-y divide-line-gray reveal">
+          
+          <!-- Artigo 1: Revista Subjetiva -->
+          <article class="py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group">
+            <div>
+              <span class="text-xs text-slate-muted">Revista Subjetiva • Medium</span>
+              <h3 class="font-serif text-lg font-bold text-slate-dark group-hover:text-marine transition-colors mt-1">
+                Retrato de uma Jovem em Chamas: um exercício de observação
+              </h3>
+              <p class="text-xs text-slate-muted mt-1 max-w-xl">
+                Ensaio sobre a construção da intimidade pelo tempo compartilhado e a delicadeza dos gestos.
+              </p>
+            </div>
+            <a 
+              href="https://medium.com/revista-subjetiva/retrato-de-uma-jovem-em-chamas-um-exerc%C3%ADcio-de-observa%C3%A7%C3%A3o-cf6c08c6cb87" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-xs font-semibold text-marine hover:underline whitespace-nowrap inline-flex items-center gap-1"
+            >
+              Ler artigo <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+            </a>
+          </article>
+
+          <!-- Artigo 2: Instituto de Cinema -->
+          <article class="py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group">
+            <div>
+              <span class="text-xs text-slate-muted">Instituto de Cinema</span>
+              <h3 class="font-serif text-lg font-bold text-slate-dark group-hover:text-marine transition-colors mt-1">
+                Análise da Linguagem Cinematográfica e a Luz Natural
+              </h3>
+              <p class="text-xs text-slate-muted mt-1 max-w-xl">
+                Exame da direção de fotografia de Claire Mathon e a desconstrução do olhar masculino tradicional.
+              </p>
+            </div>
+            <a 
+              href="https://institutodecinema.com.br/mais/conteudo/critica-retrato-de-uma-jovem-em-chamas" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-xs font-semibold text-marine hover:underline whitespace-nowrap inline-flex items-center gap-1"
+            >
+              Ler artigo <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+            </a>
+          </article>
+
+          <!-- Artigo 3: AdoroCinema -->
+          <article class="py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group">
+            <div>
+              <span class="text-xs text-slate-muted">AdoroCinema</span>
+              <h3 class="font-serif text-lg font-bold text-slate-dark group-hover:text-marine transition-colors mt-1">
+                Ficha Completa e Recepção da Crítica
+              </h3>
+              <p class="text-xs text-slate-muted mt-1 max-w-xl">
+                Avaliações de imprensa, opiniões do público e informações de elenco.
+              </p>
+            </div>
+            <a 
+              href="https://www.adorocinema.com/filmes/filme-265621/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-xs font-semibold text-marine hover:underline whitespace-nowrap inline-flex items-center gap-1"
+            >
+              Ver ficha <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Onde Assistir (Simples e Direto) -->
+    <section class="py-20 bg-off-white" id="onde-assistir">
+      <div class="px-6 md:px-16 max-w-4xl mx-auto text-center reveal">
+        
+        <p class="text-xs uppercase tracking-widest text-marine font-semibold mb-2">Streaming & Aluguel</p>
+        <h2 class="font-serif text-3xl font-bold text-slate-dark mb-4">Onde Assistir</h2>
+        <p class="text-sm text-slate-muted mb-10">
+          Disponível online nas seguintes plataformas:
         </p>
 
-        <div class="flex flex-wrap justify-center gap-12 md:gap-24 items-center">
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
           
-          <a class="group flex flex-col items-center gap-4 transition-transform hover:-translate-y-1" href="#">
-            <div class="w-20 h-20 rounded-full border border-slate-dark/20 flex items-center justify-center bg-off-white group-hover:border-umber-deep group-hover:shadow-md transition-all">
-              <span class="material-symbols-outlined text-4xl text-slate-dark group-hover:text-umber-deep transition-colors">play_circle</span>
-            </div>
-            <span class="font-ui text-xs uppercase tracking-widest text-slate-dark font-semibold">MUBI</span>
+          <a 
+            href="https://mubi.com/pt/br/films/portrait-de-la-jeune-fille-en-feu" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-6 py-3 bg-white border border-line-gray rounded-sm text-slate-dark hover:border-marine hover:text-marine transition-colors inline-flex items-center gap-2"
+          >
+            <span>MUBI</span>
+            <span class="text-xs text-slate-muted">(Streaming)</span>
           </a>
 
-          <a class="group flex flex-col items-center gap-4 transition-transform hover:-translate-y-1" href="#">
-            <div class="w-20 h-20 rounded-full border border-slate-dark/20 flex items-center justify-center bg-off-white group-hover:border-umber-deep group-hover:shadow-md transition-all">
-              <span class="material-symbols-outlined text-4xl text-slate-dark group-hover:text-umber-deep transition-colors">smart_display</span>
-            </div>
-            <span class="font-ui text-xs uppercase tracking-widest text-slate-dark font-semibold">PRIME VIDEO</span>
+          <a 
+            href="https://www.primevideo.com/-/pt/detail/0HZLEU7B2350Y896PEDPFL0VMT" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-6 py-3 bg-white border border-line-gray rounded-sm text-slate-dark hover:border-marine hover:text-marine transition-colors inline-flex items-center gap-2"
+          >
+            <span>Prime Video</span>
+            <span class="text-xs text-slate-muted">(Aluguel/Compra)</span>
           </a>
 
-          <a class="group flex flex-col items-center gap-4 transition-transform hover:-translate-y-1" href="#">
-            <div class="w-20 h-20 rounded-full border border-slate-dark/20 flex items-center justify-center bg-off-white group-hover:border-umber-deep group-hover:shadow-md transition-all">
-              <span class="material-symbols-outlined text-4xl text-slate-dark group-hover:text-umber-deep transition-colors">movie</span>
-            </div>
-            <span class="font-ui text-xs uppercase tracking-widest text-slate-dark font-semibold">APPLE TV</span>
+          <a 
+            href="https://tv.apple.com/br/movie/retrato-de-uma-jovem-em-chamas/umc.cmc.6vs2ly3786rfgnwhiymmdu8h2" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-6 py-3 bg-white border border-line-gray rounded-sm text-slate-dark hover:border-marine hover:text-marine transition-colors inline-flex items-center gap-2"
+          >
+            <span>Apple TV</span>
+            <span class="text-xs text-slate-muted">(4K HDR)</span>
           </a>
 
         </div>
+
       </div>
     </section>
   </main>
 
-  <!-- Rodapé -->
-  <footer class="w-full py-16 bg-off-white border-t border-slate-dark/10">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center px-6 md:px-20 gap-8 max-w-[1440px] mx-auto">
-      <div>
-        <span class="font-display text-2xl font-bold tracking-tight text-slate-dark">PORTRAIT</span>
-        <p class="font-ui text-xs text-taupe mt-1">Cine-Editorial • Retrato de uma Jovem em Chamas</p>
-      </div>
-      <div class="flex flex-wrap gap-8 font-ui text-xs uppercase tracking-widest font-medium">
-        <a class="text-teal-muted hover:text-umber-deep transition-colors" href="#story">Sinopse</a>
-        <a class="text-teal-muted hover:text-umber-deep transition-colors" href="#scenes">Cenas</a>
-        <a class="text-teal-muted hover:text-umber-deep transition-colors" href="#watch">Plataformas</a>
-      </div>
-      <div>
-        <span class="font-ui text-xs text-taupe uppercase tracking-widest">© 2026 • TODOS OS DIREITOS RESERVADOS</span>
-      </div>
+  <!-- Rodapé Simples -->
+  <footer class="py-12 bg-white border-t border-line-gray text-xs text-slate-muted">
+    <div class="px-6 md:px-16 max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <span class="font-serif text-base font-bold text-slate-dark">PORTRAIT</span>
+      <p>© 2026 • Página de exibição e apreciação cinematográfica</p>
     </div>
   </footer>
 
-  <!-- Lightbox Interativo -->
-  <div aria-modal="true" class="fixed inset-0 z-[100] bg-slate-dark/90 backdrop-blur-sm flex flex-col items-center justify-center p-4 md:p-10" id="lightbox" role="dialog" tabindex="-1">
-    <button aria-label="Fechar lightbox" class="absolute top-6 right-6 md:top-8 md:right-8 text-white hover:text-dusty-sand transition-colors p-2" id="lightbox-close">
-      <span class="material-symbols-outlined text-4xl">close</span>
+  <!-- Lightbox Simples para Expandir Fotos -->
+  <div aria-modal="true" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" id="lightbox" role="dialog" tabindex="-1">
+    <button aria-label="Fechar" class="absolute top-6 right-6 text-white hover:text-gray-300 p-2" id="lightbox-close">
+      <span class="material-symbols-outlined text-3xl">close</span>
     </button>
-    <div class="max-w-5xl w-full h-full flex flex-col items-center justify-center relative">
-      <img alt="Imagem Expandida" class="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-sm border border-white/10" id="lightbox-img" src=""/>
-      <p class="font-ui text-xs uppercase tracking-widest text-dusty-sand mt-4 font-semibold" id="lightbox-caption"></p>
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img alt="Imagem ampliada" class="max-w-full max-h-[80vh] object-contain rounded-sm" id="lightbox-img" src=""/>
+      <p class="text-xs text-gray-300 mt-3 font-medium" id="lightbox-caption"></p>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Intersection Observer para animações de reveal
+      // Reveal suave
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -390,26 +450,23 @@
       const closeLightbox = () => {
         lightbox.classList.remove('open');
         document.body.style.overflow = '';
-        setTimeout(() => { lightboxImg.src = ''; }, 300);
+        setTimeout(() => { lightboxImg.src = ''; }, 200);
       };
 
-      triggers.forEach(img => {
-        img.addEventListener('click', () => {
-          openLightbox(img.src, img.alt);
+      triggers.forEach(container => {
+        container.addEventListener('click', () => {
+          const img = container.querySelector('img');
+          if (img) openLightbox(img.src, img.alt);
         });
       });
 
       closeBtn.addEventListener('click', closeLightbox);
       lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox || e.target.parentElement === lightbox) {
-          closeLightbox();
-        }
+        if (e.target === lightbox) closeLightbox();
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-          closeLightbox();
-        }
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
       });
     });
   </script>
